@@ -1,0 +1,21 @@
+body{
+  background:#12242D;
+  color:#E5ECF0;
+  font-family: "roboto mono";
+  font-weight: 200;
+}
+
+.answer{
+  flex: 0 0 33%;
+  font-size: 16px;
+  text-align: center;
+  padding: 15px;
+  &--picked{
+    background:tomato;
+  }
+}
+.question{
+  &__answers{
+    display: flex;
+  }
+}

@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import Answer from './Answer';
-
 export default class Question extends Component {
   render() {
     return (

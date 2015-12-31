@@ -1,21 +1,158 @@
-body{
-  background:#12242D;
-  color:#E5ECF0;
-  font-family: "roboto mono";
-  font-weight: 200;
+/* reset5 © 2011 opensource.736cs.com MIT */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,audio,canvas,details,figcaption,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,summary,time,video{border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0;}body{line-height:1;}article,aside,dialog,figure,footer,header,hgroup,nav,section,blockquote{display:block;}nav ul{list-style:none;}ol{list-style:decimal;}ul{list-style:disc;}ul ul{list-style:circle;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:none;}ins{text-decoration:underline;}del{text-decoration:line-through;}mark{background:none;}abbr[title],dfn[title]{border-bottom:1px dotted #000;cursor:help;}table{border-collapse:collapse;border-spacing:0;}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0;}input[type=submit],input[type=button],button{margin:0!important;padding:0!important;}input,select,a img{vertical-align:middle;}
+html {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
-.answer{
-  flex: 0 0 33%;
+$col-bg: #12242D;
+$col-fg: #E5ECF0;
+
+
+body{
+  background:$col-bg;
+  color:#E5ECF0;
+  font-family: 'Fjalla One', sans-serif;
+  font-weight: 200;
   font-size: 16px;
+}
+.header{
+  padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+  border-bottom: 1px solid darken($col-fg,70%);
   text-align: center;
-  padding: 15px;
-  &--picked{
-    background:tomato;
+  &__logo{
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    font-weight: 100;
+    font-size: 1.7rem;
+    letter-spacing: 0.1rem;
+  }
+  &__sub{
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    color:#FFF;
   }
 }
+.answer{
+  cursor:pointer;
+  flex: 0 0 31%;
+  font-size: 16px;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 3px;
+  background-color: $col-fg;
+  color:$col-bg;
+  border:1px solid #000;
+  &:hover, &:active{
+    background: darken($col-fg,10%);
+  }
+  &__badge{
+    background-size:70px 70px;
+    width:70px;
+    height: 70px;
+    position: relative;
+    margin:0 auto 10px auto;
+    border-radius: 50%;
+    border:2px solid #FFF;
+  }
+  &__text{
+    font-size: 12px;
+  }
+  &--picked, &--picked:active, &--picked:hover{
+    background:#FFF;
+    .answer__badge{
+      box-shadow:0 0 15px 1px $col-bg;
+    }
+  }
+}
+.button{
+  cursor:pointer;
+  text-align: center;
+  text-transform: uppercase;
+  border:2px solid #000;
+  background: #FFF;
+  color:#000;
+  &--huge{
+    margin: 1rem 2rem;
+    border-radius: 3px;
+    font-size: 2rem;
+    padding: 1rem;
+  }
+}
+.info__text{
+  text-align: center;
+  font-size: 2rem;
+  margin:2rem 1rem;
+  line-height: 2.7rem;
+  color: darken($col-fg,15%);
+}
+.score{
+  text-align: center;
+  &__final{
+    margin:1rem auto 0 auto;
+    padding:0.4rem;
+    position: relative;
+    display: inline-block;
+    font-size: 3rem;
+    border-radius: 5px;
+    background: yellow;
+    color:#000;
+  }
+  &__footer{
+    margin: 1rem;
+    display: flex;
+    font-size: 0.7rem;
+    &__text, &__position{
+      flex-grow: 1;
+      text-align: left;
+    }
+    &__position{
+      text-align: right;
+    }
+  }
+}
+.error, .waiting, .success{
+  background: $col-fg;
+  padding: 1rem;
+  font-size: 2rem;
+}
+.error{
+  background:tomato;
+  color: #FFF;
+  strong{
+    color:#000;
+  }
+}
+.success{
+  background: #22FF83;
+  color: #000;
+}
+.waiting{
+  color: $col-bg;
+}
 .question{
+  margin:0 0 1rem 0;
   &__answers{
     display: flex;
+    justify-content:space-around;
+    padding:0 0.5rem;
+  }
+  &__text{
+    font-family: Times;
+    text-align: left;
+    margin-bottom: 1rem;
+    background: #FFF;
+    color:$col-bg;
+    font-size: 1.1rem;
+    padding: 1rem;
+    line-height: 1.4rem;
+    &:before{
+      content: "\2014 \2009";
+    }
   }
 }
